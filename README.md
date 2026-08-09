@@ -1,4 +1,4 @@
-# Spam Email Classifier
+# Spam  Classifier
 
 ## 1. Project Overview
 
