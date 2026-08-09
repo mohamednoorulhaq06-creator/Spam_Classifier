@@ -31,6 +31,7 @@ The project demonstrates the complete machine learning workflow:
 - Text preprocessing
 - Feature extraction
 - Model training
+- Hyperparameter tuning
 - Model evaluation
 - Model comparison
 - New message prediction
@@ -264,23 +265,70 @@ This means:
 - 113 spam messages were correctly classified.
 - 18 spam messages were incorrectly classified as ham.
 
+The confusion matrix image is available at:
+
+```text
+outputs/confusion_matrix.png
+```
+
 ---
 
 ## 15. Model Comparison
 
 The three models were compared using accuracy, precision, recall and F1 Score.
 
-The comparison graph is available in:
+The comparison graph is available at:
 
 ```text
 outputs/model_comparison.png
 ```
 
-The confusion matrix is available in:
+---
 
-outputs/confusion_matrix.png
+## 16. Hyperparameter Tuning
 
-## 16. Model Saving
+Hyperparameter tuning was performed on the **Linear SVM** model using `GridSearchCV` with **5-fold cross-validation**.
+
+The `C` parameter was tested using the following values:
+
+- `0.1`
+- `1`
+- `10`
+
+The best parameter found was:
+
+```text
+C = 10
+```
+
+The best cross-validation F1 Score was:
+
+```text
+0.9002
+```
+
+### Tuned Linear SVM Performance
+
+| Metric    | Score  |
+| --------- | -----: |
+| Accuracy  | 97.78% |
+| Precision | 94.26% |
+| Recall    | 87.79% |
+| F1 Score  | 90.91% |
+
+The tuned model improved recall from **86.26% to 87.79%**, meaning it detected a slightly higher proportion of spam messages.
+
+However, the original Linear SVM achieved better overall test performance, with:
+
+- Accuracy: **97.97%**
+- Precision: **97.41%**
+- F1 Score: **91.50%**
+
+Therefore, the **original Linear SVM was retained as the final model**.
+
+---
+
+## 17. Model Saving
 
 The trained Linear SVM model was saved using Joblib:
 
@@ -298,7 +346,7 @@ These files can be loaded later without retraining the model.
 
 ---
 
-## 17. New Message Prediction
+## 18. New Message Prediction
 
 The trained model can classify new messages as either Spam or Ham.
 
@@ -328,7 +376,7 @@ Ham
 
 ---
 
-## 18. Installation
+## 19. Installation
 
 Create a virtual environment:
 
@@ -350,7 +398,7 @@ pip install -r requirements.txt
 
 ---
 
-## 19. Running the Project
+## 20. Running the Project
 
 Start Jupyter Notebook:
 
@@ -368,7 +416,7 @@ Run the notebook cells from beginning to end.
 
 ---
 
-## 20. Requirements
+## 21. Requirements
 
 The required Python packages are listed in:
 
@@ -389,11 +437,10 @@ Main dependencies include:
 
 ---
 
-## 21. Future Improvements
+## 22. Future Improvements
 
 Possible future improvements include:
 
-- Hyperparameter tuning
 - Testing additional machine learning algorithms
 - Using larger spam datasets
 - Using advanced NLP techniques
@@ -404,13 +451,15 @@ Possible future improvements include:
 
 ---
 
-## 22. Conclusion
+## 23. Conclusion
 
 This project demonstrates a complete Natural Language Processing and Machine Learning pipeline for spam message classification.
 
 Three machine learning algorithms were trained and evaluated using TF-IDF features.
 
-Among the tested models, Linear SVM achieved the best performance with:
+Hyperparameter tuning was also performed on the Linear SVM model using GridSearchCV with 5-fold cross-validation.
+
+Among the tested models, the original Linear SVM achieved the best overall test performance with:
 
 **97.97% Accuracy and 91.50% F1 Score.**
 
